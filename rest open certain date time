@@ -1,0 +1,26 @@
+<?php
+// current or user supplied UNIX timestamp
+$timestamp = time();
+
+// default status
+$status = 'closed';
+
+// get current time object
+$currentTime = (new DateTime())->setTimestamp($timestamp);
+
+// loop through time ranges for current day
+foreach ($storeSchedule[date('D', $timestamp)] as $startTime => $endTime) {
+
+    // create time objects from start/end times
+    $startTime = DateTime::createFromFormat('h:i A', $startTime);
+    $endTime   = DateTime::createFromFormat('h:i A', $endTime);
+
+    // check if current time is within a range
+    if (($startTime < $currentTime) && ($currentTime < $endTime)) {
+        $status = 'open';
+        break;
+    }
+}
+
+echo "We are currently: $status";
+?>
