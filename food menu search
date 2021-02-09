@@ -1,0 +1,26 @@
+<?php
+class Database {
+    // DB Params
+    private $host = 'localhost';
+    private $db_name = 'API_melalie_assignment';
+    private $username = 'restaurant_name';
+    private $password = 'hungry12345678';
+    private $food_name = 'food_name';
+    private $beverages_name = 'beverages_name';
+    private $conn;
+
+    //// DB Connect
+    public function connect () {
+        $this->conn = null;
+
+        try {
+            $this->conn = new PDO('mysql:host=' . $this->host . ';dbname=' . $this->db_name,
+            $this->username, $this_>password);
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }   catch(PDOExcption &e) {
+            echo 'Connection Error: ' . $e->getMessage();
+        }
+        return $this->conn;
+    }
+}e ($ch);
+?>
