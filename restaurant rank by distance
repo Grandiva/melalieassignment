@@ -1,0 +1,16 @@
+<?php
+DELIMITER $$
+
+DROP FUNCTION IF EXISTS `FindDist` $$
+CREATE FUNCTION `FindDist` (lt1 DOUBLE,lg1 DOUBLE,lt2 DOUBLE,lg2 DOUBLE) RETURNS DOUBLE
+DETERMINISTIC
+BEGIN
+    DECLARE dist,eradius DOUBLE;
+
+    SET eradius=3963.1;
+    SET dist=Acos(Cos(lt1) * Cos(lg1) * Cos(lt2) * Cos(lg2) + Cos(lt1) * Sin(lg1) * Cos(lt2) * Sin(lg2) + Sin(lt1) * Sin(lt2)) * eradius;
+    RETURN dist;
+END $$
+
+DELIMITER ;
+?>
