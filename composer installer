@@ -1,0 +1,1 @@
+php composer-setup.php --install-dir=bin --filename=composer
