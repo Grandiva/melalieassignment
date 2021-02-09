@@ -1,0 +1,11 @@
+<?php
+$today = 2;
+for ($i = 0; $i < 7; $i++){
+    $eventDay = ( $i+$today ) % 7;
+    $daysToAdd = $eventDay - $today;
+    $daysToAdd = $daysToAdd < 0 ? (7+$daysToAdd) : $daysToAdd;
+    $format = "event day %d - today %d we should add %d\n";
+
+    echo sprintf($format, $eventDay, $today, $daysToAdd);
+}
+?>
